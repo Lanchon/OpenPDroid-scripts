@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+script_dir="$(dirname "$(readlink -f "$0")")"
+
+source $script_dir/opd-set-env
+
+$script_dir/opd-for-each $script_dir/opd-for-each-reset
+
+cd $openpdroid_android_dir
+repo abandon openpdroid
+

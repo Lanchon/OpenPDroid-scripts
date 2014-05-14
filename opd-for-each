@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+patch_prefix=$openpdroid_patch_dir/openpdroid_$openpdroid_patch_version
+command=$1
+
+$command	${patch_prefix}_build.patch			$openpdroid_android_dir/build
+$command	${patch_prefix}_libcore.patch			$openpdroid_android_dir/libcore
+$command	${patch_prefix}_frameworks_base.patch		$openpdroid_android_dir/frameworks/base
+$command	${patch_prefix}_frameworks_opt_telephony.patch	$openpdroid_android_dir/frameworks/opt/telephony
+$command	${patch_prefix}_packages_apps_Mms.patch		$openpdroid_android_dir/packages/apps/Mms
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+script_dir="$(dirname "$(readlink -f "$0")")"
+
+#source $script_dir/opd-set-env
+
+$script_dir/opd-apply >$script_dir/opd-diff-apply-out 2>&1
+diff $script_dir/opd-diff-apply-out-ref $script_dir/opd-diff-apply-out
+

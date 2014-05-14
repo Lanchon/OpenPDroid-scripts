@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+script_dir="$(dirname "$(readlink -f "$0")")"
+
+source $script_dir/opd-set-env
+
+cd $openpdroid_android_dir
+
+command="rm -rf"
+
+$command out/target/common/obj/JAVA_LIBRARIES/framework_intermediates
+$command out/host/common/obj/JAVA_LIBRARIES/layoutlib_intermediates
+$command out/target/common/obj/JAVA_LIBRARIES/telephony-common_intermediates
+$command out/target/common/obj/APPS/Mms_intermediates
+$command out/target/common/obj/JAVA_LIBRARIES/services_intermediates
+

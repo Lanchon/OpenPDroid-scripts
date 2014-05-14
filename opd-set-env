@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+[[ "$openpdroid_android_dir" == "" ]] && export openpdroid_android_dir=~/android/system
+[[ "$openpdroid_patch_dir" == "" ]] && export openpdroid_patch_dir=~/android/openpdroid/OpenPDroid-patches
+[[ "$openpdroid_patch_version" == "" ]] && export openpdroid_patch_version=4.4-cm
+
