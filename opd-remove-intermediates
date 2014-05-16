@@ -11,6 +11,7 @@ cd $openpdroid_android_dir
 command="rm -rf"
 
 $command out/target/common/obj/JAVA_LIBRARIES/framework_intermediates
+$command out/target/common/obj/JAVA_LIBRARIES/framework-base_intermediates
 $command out/host/common/obj/JAVA_LIBRARIES/layoutlib_intermediates
 $command out/target/common/obj/JAVA_LIBRARIES/telephony-common_intermediates
 $command out/target/common/obj/APPS/Mms_intermediates
