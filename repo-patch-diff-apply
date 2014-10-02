@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+script_dir="$(dirname "$(readlink -f "$0")")"
+
+diff_out="$script_dir/repo-patch-diff-apply-out"
+
+"$script_dir/repo-patch" apply >"$diff_out" 2>&1
+diff "${diff_out}-ref" "$diff_out"
+

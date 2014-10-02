@@ -1,0 +1,104 @@
+#!/bin/bash
+
+set -e
+
+script_dir="$(dirname "$(readlink -f "$0")")"
+source "$script_dir/repo-patch.config"
+
+function for_each_project {
+    local patch_prefix=$patch_dir/$patch_filename_prefix
+    local command="$@"
+    function for_each_project_do_this {
+        patch_file="${patch_prefix}$1"
+        patch_name="${patch_file##*/}"
+        project_dir="$android_dir/$2"
+        "$command"  
+    }
+    project_list for_each_project_do_this
+}
+
+### Apply ###
+
+function apply_do {
+    echo === apply: $patch_name ====
+    pushd "$project_dir" >/dev/null
+    git checkout -b "$git_branch"
+    patch -p1 --no-backup-if-mismatch <"$patch_file"
+    popd >/dev/null
+    echo
+}
+
+### Reset ###
+
+function reset_do {
+    #echo === reset: $patch_name ====
+    echo reset: $patch_name
+    pushd "$project_dir" >/dev/null
+    #git checkout .
+    #git clean -df
+    git add .
+    git reset --hard
+    popd >/dev/null
+    #echo
+}
+
+function reset_after {
+    pushd "$android_dir" >/dev/null
+    repo abandon "$git_branch"
+    popd >/dev/null
+}
+
+### Make ###
+
+function make_do {
+    #echo === make: $patch_name ====
+    echo make: $patch_name
+    pushd "$project_dir" >/dev/null
+    git add .
+    git diff HEAD >"$patch_file"
+    git reset
+    popd >/dev/null
+    #echo
+}
+
+### Help ###
+
+function show_help {
+cat <<EOF
+Usage: ${0##*/} COMMAND
+Available commands:
+    apply   apply patch files
+    reset   reset source tree (unpatch)
+    make    create patch files
+    help    show this help
+EOF
+}
+
+### Main ###
+
+if [[ $# -eq 1 ]]; then
+    case "$1" in
+        apply)
+            for_each_project apply_do
+            exit 0
+            ;;
+        reset)
+            for_each_project reset_do
+            reset_after
+            exit 0
+            ;;
+        make)
+            for_each_project make_do
+            exit 0
+            ;;
+        help)
+            show_help
+            exit 0
+            ;;
+    esac
+fi
+
+echo "${0##*/}: invalid command" >&2
+show_help >&2
+exit 1
+

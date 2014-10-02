@@ -1,20 +1,22 @@
 OpenPDroid-scripts
 ==================
 
-Scripts to make and apply OpenPDroid framework patches.
+Scripts to make and apply OpenPDroid patches.
 
 
 Installation
 ------------
 
-Configure paths in 'opd-set-env'.
+Configure paths in 'repo-patch.config'.
 
 
 Usage
 -----
 
-* opd-apply: apply patches to the affected components of the framework.
-* opd-diff-apply: apply patches and diff the output to a prior reference output to only show novelties.
-* opd-reset: remove patches by reseting the affected components from the local repos.
-* opd-remove-intermediates: delete previously built target files of the affected components.
-* opd-make-patches: create patches for the affected components from the live framework tree.
+* repo-patch apply: apply patch files
+* repo-patch reset: reset source tree (unpatch)
+* repo-patch make: create patch files
+* repo-patch help: show help for repo-patch
+* repo-patch-diff-apply: apply patch files, diff the output against a reference to only show anomalies
+* remove-intermediates: delete intermediate build files of the affected components
+

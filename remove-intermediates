@@ -3,11 +3,9 @@
 set -e
 
 script_dir="$(dirname "$(readlink -f "$0")")"
+source "$script_dir/repo-patch.config"
 
-source $script_dir/opd-set-env
-
-cd $openpdroid_android_dir
-
+cd "$android_dir"
 command="rm -rf"
 
 $command out/target/common/obj/JAVA_LIBRARIES/framework_intermediates
