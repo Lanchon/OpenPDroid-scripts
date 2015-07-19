@@ -1,15 +1,15 @@
-=== apply: openpdroid_4.4-cm_build.patch ====
+=== apply: openpdroid_build.patch ====
 Switched to a new branch 'openpdroid'
 patching file core/pathmap.mk
 patching file target/product/core_minimal.mk
 
-=== apply: openpdroid_4.4-cm_libcore.patch ====
+=== apply: openpdroid_libcore.patch ====
 Switched to a new branch 'openpdroid'
 patching file luni/src/main/java/java/lang/PrivacyInputStream.java
 patching file luni/src/main/java/java/lang/PrivacyProcessManager.java
 patching file luni/src/main/java/java/lang/ProcessManager.java
 
-=== apply: openpdroid_4.4-cm_frameworks_base.patch ====
+=== apply: openpdroid_frameworks_base.patch ====
 Switched to a new branch 'openpdroid'
 patching file Android.mk
 patching file api/current.txt
@@ -40,16 +40,16 @@ patching file privacy/java/android/privacy/surrogate/PrivacyCursor.java
 patching file privacy/java/android/privacy/surrogate/PrivacyLocationManager.java
 patching file privacy/java/android/privacy/surrogate/PrivacyTelephonyManager.java
 patching file privacy/java/android/privacy/surrogate/PrivacyWifiManager.java
-patching file services/java/com/android/server/PrivacyTelephonyRegistry.java
+patching file services/core/java/com/android/server/PrivacyTelephonyRegistry.java
+patching file services/core/java/com/android/server/TelephonyRegistry.java
+patching file services/core/java/com/android/server/am/BroadcastQueue.java
 patching file services/java/com/android/server/SystemServer.java
-patching file services/java/com/android/server/TelephonyRegistry.java
-patching file services/java/com/android/server/am/BroadcastQueue.java
 patching file telephony/java/android/telephony/CellInfoGsm.java
 patching file telephony/java/android/telephony/PhoneStateListener.java
 patching file telephony/java/android/telephony/ServiceState.java
 patching file wifi/java/android/net/wifi/WifiInfo.java
 
-=== apply: openpdroid_4.4-cm_frameworks_opt_telephony.patch ====
+=== apply: openpdroid_frameworks_opt_telephony.patch ====
 Switched to a new branch 'openpdroid'
 patching file src/java/android/privacy/surrogate/PrivacyCDMALTEPhone.java
 patching file src/java/android/privacy/surrogate/PrivacyCDMAPhone.java
@@ -66,7 +66,7 @@ patching file src/java/com/android/internal/telephony/gsm/GsmServiceStateTracker
 patching file src/java/com/android/internal/telephony/sip/SipPhone.java
 patching file src/java/com/android/internal/telephony/sip/SipPhoneFactory.java
 
-=== apply: openpdroid_4.4-cm_packages_apps_Mms.patch ====
+=== apply: openpdroid_packages_apps_Mms.patch ====
 Switched to a new branch 'openpdroid'
 patching file src/com/android/mms/transaction/HttpUtils.java
 
