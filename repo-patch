@@ -26,7 +26,7 @@ function apply_do {
     echo === apply: $patch_name ====
     pushd "$project_dir" >/dev/null
     git checkout -b "$git_branch"
-    patch -p1 --no-backup-if-mismatch <"$patch_file"
+    patch -p1 --no-backup-if-mismatch <"$patch_file" && true
     popd >/dev/null
     echo
 }
@@ -39,7 +39,7 @@ function reset_do {
     pushd "$project_dir" >/dev/null
     #git checkout .
     #git clean -df
-    git add .
+    git add --all
     git reset --hard
     popd >/dev/null
     #echo
